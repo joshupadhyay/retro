@@ -18,6 +18,17 @@ Type `/retro` before ending a session. Claude reviews the full transcript, score
    > You didn't run /retro last session. Want a quick retro? (yes / skip)
 3. **If you run `/retro` before ending** → the skill deletes the flag, so the next session won't prompt
 
+## How I Use It
+
+My setup auto-nags me if I forget to run a retro:
+
+1. **Session ends** (I `/clear`, close terminal, etc.) → a `SessionEnd` hook writes a flag to `~/.claude/pending-feedback/last-session`
+2. **Next session** → when I run `/checkin` or `/startwork`, they check for that flag and ask:
+   > You didn't run /retro last session. Want a quick retro? (yes / skip)
+3. **If I run `/retro` before ending** → the skill deletes the flag, so the next session won't prompt
+
+This means retros happen consistently without me having to remember. The worst case is a gentle nudge at the start of the next session.
+
 ## Sample Output
 
 ```
